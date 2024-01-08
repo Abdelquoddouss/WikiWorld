@@ -1,0 +1,17 @@
+{
+    "name": "youcode/wiki",
+    "autoload": {
+        "psr-4": {
+            "Youcode\\Wiki\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "abdelquoddouss",
+            "email": "fadliabdelquoddouss.06@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
