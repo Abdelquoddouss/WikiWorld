@@ -22,18 +22,15 @@
         font-family: 'Roboto', sans-serif;
     }
     .pageLogin{
-       background-image: url('../../public/imgs/78-phrase-d-accueil-dans-differentes-langues-mots-concept-cloud-dxt2fk.jpg'); 
-       background-size: cover;
-       height: 93vh;
-       border: 0px solid var(--color4, #000);
-        /* backdrop-filter: blur(2px); */
-        flex-shrink: 0;
-        backdrop-filter: blur(4px);
-
+       background-image: url('../../public/imgs/902238-most-popular-black-wallpaper-desktop-1920x1200.jpg'); 
+       height: 100vh;
+       width: 100%;
 
     }
     .pageLogin form{
-      background-color:darkgrey;
+        
+      background-color:rgba(0,0,0,0.6);
+      
     }
    i{
     color :#000;
@@ -46,9 +43,9 @@
 
 
 <body>
-<div class="pageLogin md:p-10 pt-20 m-8  ">
-  <form class="lg:w-2/4   md:w-2/4 w-full  mx-auto block  px-14 p-10  h-fit " action="user/register" method="post">
-        <h3 class="text-5xl font-bold text-center  leading-9  ">SINGN UP</h3>   
+<div class="pageLogin pt-10">
+  <form class="lg:w-2/4   md:w-2/4 w-full  mx-auto block  px-14 p-10  h-fit " action="" method="post">
+        <h3 class="text-5xl  text-white	 font-bold text-center  leading-9  ">SINGN UP</h3>   
        
     <div class="grid md:grid-cols-2 md:gap-6">
         <div class="mt-10  ">
@@ -69,13 +66,13 @@
             <label for="email" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">password</label>
             <input type="password" name="password" id="password" class="bg-gray-50 border w-64	h-14	 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••" required>
         </div>
-        <div class="mt-10">
+        <div class="mt-10 	 ">
             <label for="password" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">verify password</label>
             <input type="password" name="verify" id="password" placeholder="••••••••" class="bg-gray-50 border w-64	h-14   border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-600 dark:border-gray-500 w-full dark:placeholder-gray-400 dark:text-white" required>
         </div>
     </div>
        
-        <button type="submit" name="submit_register" class="w-full md:mt-10   text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">register</button>
+        <button type="submit" name="submit_register" class="w-full md:mt-10 mt-10   text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">register</button>
         <div class="text-center md:mt-10 font-medium mx-auto block  text-gray-500 dark:text-gray-300">
         <i class="fa-brands fa-x-twitter  text-3xl "></i>
         <i class="fa-brands fa-facebook text-3xl "></i>
