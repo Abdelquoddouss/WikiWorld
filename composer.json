@@ -2,7 +2,7 @@
     "name": "youcode/wiki",
     "autoload": {
         "psr-4": {
-            "Youcode\\Wiki\\": "src/"
+            "app\\":"app"
         }
     },
     "authors": [

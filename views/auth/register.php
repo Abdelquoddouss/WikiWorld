@@ -44,7 +44,7 @@
 
 <body>
 <div class="pageLogin pt-10">
-  <form class="lg:w-2/4   md:w-2/4 w-full  mx-auto block  px-14 p-10  h-fit " action="" method="post">
+  <form class="lg:w-2/4   md:w-2/4 w-full  mx-auto block  px-14 p-10  h-fit " action="../../app/controller/AuthController.php" method="post">
         <h3 class="text-5xl  text-white	 font-bold text-center  leading-9  ">SINGN UP</h3>   
        
     <div class="grid md:grid-cols-2 md:gap-6">
