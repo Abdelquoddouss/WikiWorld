@@ -1,12 +1,13 @@
 <?php
  namespace app\model;
+
  include __DIR__ . '/../../vendor/autoload.php';
 
- use app\connection\Connection;
+ use app\connection\connection;
  use PDO;
 
 
- class user
+ class User
  {
     private $firstname;
     private $lastname;
@@ -26,6 +27,7 @@
         $this->password = $password;
     }
 
+
     public function createUser()
     {
 
@@ -37,8 +39,19 @@
         $stmt->bindParam(2, $this->lastname);
         $stmt->bindParam(3, $this->email);
         $stmt->bindParam(4, $this->password);
+        
         $stmt->execute();
+    }
 
+    public function getUserByUsername(){ 
+        $sql="SELECT u.*, r.name AS role_name FROM users as u
+        INNER JOIN role as r ON r.id = u.role_id WHERE u.email =? ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$this->email]);
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        // $stmt->closeCursor();
+        return $row;
+        
     }
 
 

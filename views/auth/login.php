@@ -41,7 +41,7 @@
 
 <body>
 <div class="pageLogin  pt-10  ">
-  <form class="lg:w-1/4   md:w-2/4 w-full  mx-auto block  px-14 p-10  h-fit " action="user/login" method="post">
+  <form class="lg:w-1/4   md:w-2/4 w-full  mx-auto block  px-14 p-10  h-fit " action="../../app/controller/AuthController.php" method="post">
         <h3 class="text-5xl  text-white	 font-bold text-center  leading-9  ">LOGIN </h3>
         <div class="mt-10 md:grid-cols-2 md:gap-6">
             <label for="email" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
