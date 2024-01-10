@@ -38,6 +38,8 @@
         $query = "SELECT * FROM `categories`";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
+        $categories= $stmt->fetchAll();
+        return $categories;
         $ad = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $ad;
     }

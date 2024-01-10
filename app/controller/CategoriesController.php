@@ -20,10 +20,11 @@ class CategoriesController
         }
     }
 
-    public function selectCategories()
+public function selectCategories()
 {
     $obj = new Categories(null, null);
-    return $obj->AllCategories();
+    $categories = $obj->AllCategories();
+    return $categories ;
 }
 
 public function deletCategory()
@@ -36,18 +37,6 @@ public function deletCategory()
     }
 
 }
-
-// public function updateCategory()
-// {
-//     if (isset($_POST['update_categories'])) {
-//         $id = $_POST['category_id'];
-//         $name = $_POST['name'];
-
-//         $category = new Categories($id, $name);
-//         $result = $category->updateRecord($id, $name);
-//     }
-// }
-
 
 
 }

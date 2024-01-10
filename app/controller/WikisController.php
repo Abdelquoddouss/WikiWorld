@@ -15,10 +15,15 @@ include __DIR__ . '/../../vendor/autoload.php';
             $description = $_POST['description'];
             $title = $_POST['title'];
             $status = $_POST['status'];
-            $img = file_get_contents($_FILES['img']['tmp_name']);
+            $name = $_FILES['img']['name'];
+            $temp = $_FILES['img']['tmp_name'];
+            $upload_folder = "../../public/imgs/".$name;
             // var_dump($img);
-            $result= new Wikis($description, $title, $status,null,null, $img);
-            $result->InsertWiki();
+            if(move_uploaded_file($temp , $upload_folder)){
+               $result= new Wikis($description, $title, $status,null,null, $upload_folder);
+               $result->InsertWiki();
+            }
+               
           
 
     }
