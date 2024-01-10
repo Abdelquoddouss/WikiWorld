@@ -42,16 +42,13 @@ class AuthController
             // var_dump($data);
             
           
-       // $_SESSION['email'] = $email;
-                // $_SESSION['role'] = $data->role_name;
-                // $_SESSION['id'] = $data->id;
+       $_SESSION['email'] = $email;
+                $_SESSION['role'] = $data->role_name;
+                $_SESSION['id'] = $data->id;
             if(password_verify($password,$data->password)){
-
-         
 
                     if ($data->role_name ==='admin') {
                         echo"admin";
-    
                         }
                         else{
                             echo"user";
