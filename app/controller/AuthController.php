@@ -7,6 +7,7 @@ use app\model\User;
 session_start();
 
 
+
 class AuthController
 {
     public function Register()
@@ -39,36 +40,20 @@ class AuthController
         }else {
             $obj= new User(null,null,null,$email,$password,null);
             $data=$obj->getUserByUsername();
-            // var_dump($data);
             
-          
-       $_SESSION['email'] = $email;
-                $_SESSION['role'] = $data->role_name;
-                $_SESSION['id'] = $data->id;
             if(password_verify($password,$data->password)){
 
                     if ($data->role_name ==='admin') {
-                        echo"admin";
-                        }
-                        else{
-                            echo"user";
+                        $_SESSION['role'] = $data->role_name;
+                        header('location:../../views/admin/Dachboard.php');
+                        // var_dump($_SESSION['role']);                
+                    }else{
+                            $_SESSION['role'] = $data->role_name;
+                            var_dump($_SESSION['role']);
+                            header('location:../../index.php');
                         }
         }
-            // if (!$data) {
-            //     echo"email not on data base";
-            //     $data->password;
-            // }elseif(password_verify($password,$data->password)){
-               
-            //     $_SESSION['email'] = $email;
-            //     $_SESSION['role'] = $data->role_name;
-            //     $_SESSION['id'] = $data->id;
-            //     if ($data->role_name ==='admin') {
-            //         echo"admin";
-
-            //         }else{
-            //             echo"user";
-            //         }
-            // }
+            
       }
     
 
@@ -77,9 +62,6 @@ class AuthController
 
 
 }
-
-
-
 
 
 if (isset($_POST['submit_register'])) {

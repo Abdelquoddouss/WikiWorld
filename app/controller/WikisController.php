@@ -28,6 +28,20 @@ include __DIR__ . '/../../vendor/autoload.php';
 
     }
 
+    public function selectWikis()
+    {
+        $obj = new Wikis('','','','','','');
+        $wikis = $obj->getAllWikis();
+        return $wikis;
+    
+    }
+
+
+    public function selectWikiById($id) {
+      $obj = new Wikis('', '', '', $id, '', ''); 
+      $wiki = $obj->selectWikiById($id);
+      return $wiki;
+  }
 
  }
 
@@ -37,6 +51,7 @@ include __DIR__ . '/../../vendor/autoload.php';
     $auth = new WikisController();
     $auth->processForm();
 }
+
 
 
 ?>

@@ -13,5 +13,6 @@ require_once '../partials/navbar.php';
     tttttttttt
 
     <?php
+    
 require_once '../partials/footer.php';
 ?>

@@ -5,6 +5,7 @@
 
     use app\connection\connection;
     use PDO;
+use PDOException;
 
     class Wikis
     {
@@ -39,6 +40,35 @@
 
             return $result;
         }
+
+        public function getAllWikis(){
+            try{
+                $query = "SELECT * FROM `wikis`";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+                return $result;
+            }
+            catch(PDOException $e){
+                echo "Error".$e->getMessage();
+            }
+        }
+
+
+    public function selectWikiById($id) {
+        try {
+            $query = "SELECT * FROM `wikis` WHERE `id` = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(1, $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            
+        }
+}
+
 
 
 
