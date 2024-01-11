@@ -1,12 +1,24 @@
 <?php
 session_start();
+
 require_once 'views/partials/navbar.php';
 
 use app\controller\CategoriesController;
+use app\controller\WikisController;
+
 include __DIR__ . '/vendor/autoload.php';
 
-$d = new CategoriesController();
-$categories = $d->selectCategories();
+// $d = new CategoriesController();
+// $categories = $d->selectCategories();
+
+$a= new CategoriesController();
+$category = $a->selectCategories2(); 
+
+
+$b= new WikisController();
+$Wikis= $b->selectWikis2();
+
+
 
 
 ?>
@@ -27,7 +39,7 @@ $categories = $d->selectCategories();
 
 
                         if(isset($_SESSION['role']) == "auteur"){
-                            echo '<a href="/WikiWorld/views/auth/login.php" class="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700">Add Wiki</a>';
+                            echo '<a href="/WikiWorld/views/client/InserWiki.php" class="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700">Add Wiki</a>';
                         }
                         else{
                             echo '<a href="/WikiWorld/views/auth/login.php" class="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700">Get Started</a>';
@@ -52,7 +64,7 @@ $categories = $d->selectCategories();
         <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">explore our <br> awesome <span class="text-blue-500">Categories</span></h1>
 
         <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
-        <?php foreach($categories as $category) : ?>
+        <?php foreach($category as $a) : ?>
 
             <div class="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
                 <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
@@ -61,7 +73,7 @@ $categories = $d->selectCategories();
                     </svg>
                 </span>
 
-                <h1 class="text-xl font-semibold text-gray-700 capitalize dark:text-white"><?=$category["name"]?></h1>
+                <h1 class="text-xl font-semibold text-gray-700 capitalize dark:text-white"><?=$a["name"]?></h1>
 
             </div>
             <?php endforeach; ?>
@@ -72,48 +84,30 @@ $categories = $d->selectCategories();
 
 
 <!-- WIKIS -->
+
 <h1 class="mt-2 text-5xl font-semibold   md:mt-0 text-center  ">Wikis</h1>
 <div class="flex  gap-10 ps-10	my-10">
+    <?php foreach($Wikis as $wik): ?>
 <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <img class="object-cover w-full h-64" src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Article">
+<img class="object-cover w-full h-64" src="<?= 'public/imgs/' . basename($wik['img']) ?>" alt="Article">
+
 
     <div class="p-6">
         <div>
-            <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Product</span>
-            <a href="#" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link">I Built A Successful Blog In One Year</a>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
+            
+            <h1 class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wik['title']?></h1>  
+            <a href="./views/client/DetailWiki.php?id=<?= $wik['id']?>" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link"></a>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wik['description']?></p>
         </div>
-
-        <div class="mt-4">
-            <div class="flex items-center">
-                <div class="flex items-center">
-                    <img class="object-cover h-10 rounded-full" src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60" alt="Avatar">
-                    <a href="#" class="mx-2 font-semibold text-gray-700 dark:text-gray-200" tabindex="0" role="link">Jone Doe</a>
-                </div>
-                <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">21 SEP 2015</span>
-            </div>
         </div>
     </div>
+    <?php endforeach;?>
 </div>
 
-<div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <img class="object-cover w-full h-64" src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Article">
-
-    <div class="p-6">
-        <div>
-            <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Product</span>
-            <a href="#" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link">I Built A Successful Blog In One Year</a>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
-        </div>
-
-    </div>
-</div>
-</div>
 <div class="  md:mt-0 text-center   ps-10	my-10 ">
-<button  type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-All Wikis
+<a  href="/WikiWorld/views/client/Wiki.php"  type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+All Wikis </a>
 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
 </svg>
 </div>
 

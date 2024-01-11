@@ -27,6 +27,13 @@ public function selectCategories()
     return $categories ;
 }
 
+public function selectCategories2()
+{
+    $obj = new Categories(null, null);
+    $categories = $obj->AllCategoriesby2();
+    return $categories ;
+}
+
 public function deletCategory()
 {
     if (isset($_GET['delete_id'])) {

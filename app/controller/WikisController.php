@@ -14,13 +14,14 @@ include __DIR__ . '/../../vendor/autoload.php';
        
             $description = $_POST['description'];
             $title = $_POST['title'];
+            $categories_id = $_POST['categories_id'];
             $status = $_POST['status'];
             $name = $_FILES['img']['name'];
             $temp = $_FILES['img']['tmp_name'];
             $upload_folder = "../../public/imgs/".$name;
             // var_dump($img);
             if(move_uploaded_file($temp , $upload_folder)){
-               $result= new Wikis($description, $title, $status,null,null, $upload_folder);
+               $result= new Wikis($description, $title, $status,null,null, $upload_folder,$categories_id);
                $result->InsertWiki();
             }
                
@@ -30,15 +31,27 @@ include __DIR__ . '/../../vendor/autoload.php';
 
     public function selectWikis()
     {
-        $obj = new Wikis('','','','','','');
+        $obj = new Wikis('','','','','','','');
         $wikis = $obj->getAllWikis();
         return $wikis;
     
     }
 
 
+
+    public function selectWikis2()
+    {
+        $obj = new Wikis('','','','','','','');
+        $wikis = $obj->getAllWikis2();
+        return $wikis;
+    
+    }
+
+
+
+
     public function selectWikiById($id) {
-      $obj = new Wikis('', '', '', $id, '', ''); 
+      $obj = new Wikis('','','', $id,'','',''); 
       $wiki = $obj->selectWikiById($id);
       return $wiki;
   }

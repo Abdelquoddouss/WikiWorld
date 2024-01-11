@@ -35,7 +35,7 @@
 
     public function AllCategories()
     {
-        $query = "SELECT * FROM `categories`";
+        $query = "SELECT * FROM `categories` ORDER BY id DESC";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $categories= $stmt->fetchAll();
@@ -43,6 +43,18 @@
         $ad = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $ad;
     }
+
+    public function AllCategoriesby2()
+    {
+        $query = "SELECT * FROM `categories` ORDER BY id DESC lIMIT 3";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $categories= $stmt->fetchAll();
+        return $categories;
+        $ad = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $ad;
+    }
+
     public function deleteCategory()
     {
         $query = "DELETE FROM categories WHERE id = ?";

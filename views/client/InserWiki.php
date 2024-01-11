@@ -1,5 +1,13 @@
 <?php
 require_once '../partials/navbar.php';
+use app\controller\TagsController;
+use app\controller\CategoriesController;
+include __DIR__ . '/../../vendor/autoload.php';
+$c = new TagsController();
+$tags = $c->selectTags();
+
+$d = new CategoriesController();
+$categories = $d->selectCategories();
 ?>
 
 <!-- component -->
@@ -7,6 +15,27 @@ require_once '../partials/navbar.php';
     <h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
     <form method="post"  enctype="multipart/form-data"  action="../../app/controller/WikisController.php">
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+          
+<div class="w-1/3 mx-auto mt-10">
+<label for="small" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categories</label>
+
+<select id="small" name="categories_id"  class="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <option selected>Choose a country</option>
+  <?php foreach($categories as $category) : ?>
+  <option value="<?=$category["id"]?>"><?=$category["name"]?></option>
+  <?php endforeach; ?>
+</select> 
+<label for="default" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
+
+
+<select id="default" class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <option selected>Choose a country</option>
+    <?php foreach($tags as $tag) : ?>
+  <option value="US"><?=$tag["name"] ?></option>
+  <?php endforeach; ?>
+</select>
+
+</div>
             <div>
                 <label class="text-white dark:text-gray-200" for="username">title</label>
                 <input id="username"  name="title" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
