@@ -59,11 +59,18 @@ include __DIR__ . '/../../vendor/autoload.php';
             echo "Error: " . $e->getMessage();
         }
     }
+
     
 
  }
 
-
+ if(isset($_GET['search'])){
+    $search = $_GET['search'];
+    $wiki= new Wikis(null,null,null,null,null,null,null);
+ $wikis= $wiki->searchWiki($search);
+  header("content-type:application/json");
+  echo json_encode($wikis);
+ }
 
  if (isset($_POST['submit_wiki'])) {
     $auth = new WikisController();

@@ -20,12 +20,7 @@ class AuthController
         $password = password_hash($password,PASSWORD_DEFAULT);
         $objuser= new User(null,$firstname,$lastname,$email,$password,null);
         $objuser->createUser();
- 
-        // $_SESSION['email'] = $email;
-        // $_SESSION['firstname'] = $firstname;
-        // $_SESSION['lastname']=$lastname;
-        // $_SESSION['password']= $password;
-      
+
         header('location:../../views/auth/login.php  ');  
     }
 
@@ -46,7 +41,6 @@ class AuthController
                     if ($data->role_name ==='admin') {
                         $_SESSION['role'] = $data->role_name;
                         header('location:../../views/admin/Dachboard.php');
-                        // var_dump($_SESSION['role']);                
                     }else{
                             $_SESSION['role'] = $data->role_name;
                             var_dump($_SESSION['role']);
@@ -85,7 +79,6 @@ if (isset($_POST['submit_register'])) {
 if (isset($_POST['login_submit'])) {
     $auth = new AuthController();
     $res= $auth->login($_POST["email"],$_POST["password"]);
-    // var_dump($res);
 }
 
 if (isset($_GET['delete_id'])) {

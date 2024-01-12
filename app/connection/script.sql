@@ -16,15 +16,9 @@ CREATE Table users(
     Foreign Key (role_id) REFERENCES role(id) oN DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE Table categories(
-    id int PRIMARY key AUTO_INCREMENT,
- name VARCHAR(255)
-);
 
-CREATE Table tags(
-     id int PRIMARY key AUTO_INCREMENT,
- name VARCHAR(255)
-);
+
+
 
 CREATE Table wikis(
      id int PRIMARY key AUTO_INCREMENT,
@@ -36,6 +30,16 @@ CREATE Table wikis(
     user_id int,
     Foreign Key (categorie_id) REFERENCES categories(id)oN DELETE CASCADE ON UPDATE CASCADE,
     Foreign Key (user_id) REFERENCES users(id)oN DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE Table categories(
+    id int PRIMARY key AUTO_INCREMENT,
+ name VARCHAR(255)
+);
+
+CREATE Table tags(
+     id int PRIMARY key AUTO_INCREMENT,
+ name VARCHAR(255)
 );
 
 CREATE Table wikis_tags(
