@@ -33,7 +33,7 @@ namespace app\model;
         }
 
 
-        public function InsertWiki()
+        public function InsertWiki($tagId)
         {
             $query = "INSERT INTO `wikis`(`description`, `title`, `status`, `img`,`categorie_id`, `user_id`) VALUES (?, ?, ?, ?,?,?)";
             $stmt = $this->db->prepare($query);
@@ -44,7 +44,12 @@ namespace app\model;
             $stmt->bindParam(5,$this->categories_id);
             $stmt->bindParam(6,$this->user_id);
             $result = $stmt->execute();
-            return $result;
+            $wikiId = $this->db->lastInsertId();
+            if($result){
+                $query = "INSERT INTO `wikis_tags`(`wiki_id`, `tags_id`) VALUES (? , ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute([$wikiId , $tagId]);
+            }
         }
 
         public function getAllWikis(){
@@ -68,6 +73,7 @@ namespace app\model;
                 $stmt->execute();
                 $result = $stmt->fetchAll();
                 return $result;
+                header("location:../../views/admin/DchboardWiki.php");
             }
             catch(PDOException $e){
                 echo "Error".$e->getMessage();
@@ -77,7 +83,29 @@ namespace app\model;
 
         public function selectWikiById($id) {
             try {
-                $query = "SELECT * FROM `wikis` WHERE `id` = ?";
+                $query = "
+                SELECT
+    wikis.id AS wiki_id,
+    wikis.title,
+    wikis.description,
+    wikis.status,
+    wikis.img,
+    categories.name AS category_name,
+    GROUP_CONCAT(tags.name) AS tag_names
+FROM
+    wikis
+JOIN
+    categories ON wikis.categorie_id = categories.id
+LEFT JOIN
+    wikis_tags ON wikis.id = wikis_tags.wiki_id
+LEFT JOIN
+    tags ON wikis_tags.tags_id = tags.id
+WHERE
+    wikis.id = ? -- Replace with the specific wiki ID
+GROUP BY
+    wikis.id, wikis.title, wikis.description, wikis.status, wikis.img, categories.name;
+
+                ";
                 $stmt = $this->db->prepare($query);
                 $stmt->bindParam(1, $id);
                 $stmt->execute();

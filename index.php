@@ -31,9 +31,9 @@ $Wikis= $b->selectWikis2();
 <div class="lg:flex">
         <div class="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
             <div class="max-w-xl">
-                <h2 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Build Your New <span class="text-blue-600 dark:text-blue-400">Idea</span></h2>
+                <h2 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">wiki<span class="text-blue-600 dark:text-blue-400">world</span></h2>
 
-                <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates.</p>
+                <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">WikiWorld est une plateforme de gestion de wikis conçue pour simplifier la création, la collaboration et la diffusion des connaissances. Que vous soyez un étudiant, un professionnel ou un passionné cherchant à partager votre expertise, WikiWorld est l'outil idéal pour organiser vos informations de manière structurée et accessible</p>
 
                 <div class="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
                     <?php
@@ -122,9 +122,9 @@ All Wikis </a>
         <img class="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400" alt="Testimonial avatar" src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80">
     </div>
 
-    <h2 class="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">Design Tools</h2>
+    <h2 class="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">Directeur Anas</h2>
 
-    <p class="mt-2 text-sm text-gray-600 dark:text-gray-200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!</p>
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-200">En tant qu'enseignant, WikiWorld est un outil précieux pour créer des wikis éducatifs interactifs. Mes étudiants peuvent collaborer sur des projets de groupe, partager des ressources et créer un contenu pédagogique de qualité. </p>
 
 </div>
 <div class="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
@@ -132,18 +132,18 @@ All Wikis </a>
         <img class="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400" alt="Testimonial avatar" src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80">
     </div>
 
-    <h2 class="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">Design Tools</h2>
+    <h2 class="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">Hamza</h2>
 
-    <p class="mt-2 text-sm text-gray-600 dark:text-gray-200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!</p>
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-200">je suis impressionné par la richesse des fonctionnalités offertes par WikiWorld. L'éditeur de texte riche permet de créer des wikis visuellement attrayants, avec la possibilité d'insérer des médias et de lier différentes pages entre elles.</p>
 </div>
 <div class="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
     <div class="flex justify-center -mt-16 md:justify-end">
         <img class="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400" alt="Testimonial avatar" src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80">
     </div>
 
-    <h2 class="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">Design Tools</h2>
+    <h2 class="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">Tools</h2>
 
-    <p class="mt-2 text-sm text-gray-600 dark:text-gray-200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!</p>
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-200">WikiWorld a révolutionné la façon dont je gère mes projets de recherche. La plateforme conviviale et intuitive facilite la création et la collaboration sur des wikis personnalisés.</p>
 </div>
 </div>
 
@@ -161,11 +161,10 @@ All Wikis </a>
                 </div>
 
                 <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What can i expect at my first consultation?</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Qu'est-ce qu'un wiki ?</h1>
 
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    Un wiki est une plateforme en ligne qui permet à plusieurs utilisateurs de collaborer et de créer du contenu de manière collective. C'est un système de gestion de connaissances où les utilisateurs peuvent créer, modifier et organiser des pages web contenant des informations sur un sujet spécifique.                    </p>
                 </div>
             </div>
 
@@ -177,11 +176,10 @@ All Wikis </a>
                 </div>
 
                 <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What are your opening house?</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Comment puis-je créer un nouveau wiki sur WikiWorld ?</h1>
 
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    Pour créer un nouveau wiki sur WikiWorld, il vous suffit de vous inscrire sur notre plateforme et de vous connecter à votre compte. Une fois connecté, vous pouvez accéder à votre tableau de bord et utiliser l'option "Créer un nouveau wiki". Vous pouvez alors donner un titre à votre wiki, ajouter une description et commencer à ajouter du contenu.                    </p>
                 </div>
             </div>
 
@@ -193,11 +191,10 @@ All Wikis </a>
                 </div>
 
                 <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Do i need a referral?</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Puis-je inviter d'autres personnes à contribuer à mon wiki ?</h1>
 
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    Oui, absolument ! WikiWorld favorise la collaboration et vous permet d'inviter d'autres utilisateurs à contribuer à votre wiki. Vous pouvez gérer les autorisations des utilisateurs et définir qui peut simplement visualiser le contenu ou qui peut également le modifier. Cela permet une construction collective du savoir et une collaboration efficace.                    </p>
                 </div>
             </div>
 
@@ -209,11 +206,10 @@ All Wikis </a>
                 </div>
 
                 <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Is the cost of the appoinment covered by private health insurance?</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white"> Comment puis-je formater le contenu de mon wiki ?</h1>
 
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    WikiWorld propose un éditeur de texte riche qui vous permet de formater le contenu de votre wiki de manière conviviale. Vous pouvez mettre en évidence des mots ou des phrases, créer des listes à puces ou numérotées, ajouter des titres et sous-titres, insérer des images et des vidéos, créer des liens hypertexte, et bien plus encore.                    </p>
                 </div>
             </div>
 
@@ -225,11 +221,10 @@ All Wikis </a>
                 </div>
 
                 <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What is your cancellation policy?</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Comment puis-je rechercher des informations spécifiques sur WikiWorld ?</h1>
 
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    WikiWorld propose un système de recherche puissant qui vous permet de trouver rapidement des informations spécifiques. Vous pouvez utiliser la barre de recherche située en haut du site pour entrer des mots-clés ou des phrases liés à ce que vous recherchez. Les résultats de recherche afficheront les wikis pertinents contenant les informations que vous recherchez.                        </p>
                 </div>
             </div>
 
@@ -240,11 +235,10 @@ All Wikis </a>
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What are the parking and public transport options?</h1>
+                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white"> Est-ce que WikiWorld sauvegarde les versions précédentes des wikis ?</h1>
 
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    Oui, WikiWorld conserve un historique des versions précédentes de vos wikis. Cela vous permet de voir toutes les modifications apportées au fil du temps et de revenir à une version antérieure si nécessaire. L'historique des versions est un outil précieux pour suivre les changements et garantir l'intégrité de votre contenu.                    </p>
                 </div>
             </div>
         </div>

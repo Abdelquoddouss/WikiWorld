@@ -29,13 +29,12 @@ if (isset($_GET['id'])) {
                             <?= $wiki['description'] ?>
                         </p>
 
-                        <h3 class="mt-6 text-lg font-medium text-blue-500">status</h3>
-                        <p class="text-gray-600 dark:text-gray-300"><?= $wiki['status'] ?></p>
-
-
                         <h3 class="mt-6 text-lg font-medium text-blue-500">categories</h3>
-                        <p class="text-gray-600 dark:text-gray-300"><?= $wiki['categorie_id'] ?></p>
+                        <p class="text-gray-600 dark:text-gray-300"><?= $wiki['category_name'] ?></p>
 
+                        <h3 class="mt-6 text-lg font-medium text-blue-500">Tags</h3>
+
+                        <p class="text-gray-600 dark:text-gray-300"><?= $wiki['tag_names'] ?></p>
 
 
                     </div>

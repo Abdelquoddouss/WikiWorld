@@ -20,14 +20,15 @@
             $title = $_POST['title'];
             $categories_id = $_POST['categories_id'];
             $user_id = $_SESSION['userid'];
-            $status = $_POST['status'];
+            $tagId = $_POST['tagId'];
+            // $status = $_POST['status'];
             $name = $_FILES['img']['name'];
             $temp = $_FILES['img']['tmp_name'];
             $upload_folder = "../../public/imgs/".$name;
             // var_dump($img);
             if(move_uploaded_file($temp , $upload_folder)){
-                $result= new Wikis($description, $title, $status, null, null, $upload_folder, $categories_id, $user_id);
-                $result->InsertWiki();
+                $result= new Wikis($description, $title, null, null, null, $upload_folder, $categories_id, $user_id);
+                $result->InsertWiki($tagId);
 
              header("location:../../views/client/wiki.php");
             }
@@ -48,6 +49,7 @@
     {
         $obj = new Wikis('','','','','','','','');
         $wikis = $obj->getAllWikis2();
+       
         return $wikis;
     
     }
@@ -85,11 +87,13 @@ if(isset($_GET['acceptid'])){
     $wikiaccept = $_GET['acceptid'];
     $wiki = new Wikis(null,null,null,null,null,null,null,null);
     $wiki->acceptWiki($wikiaccept);
+    header("location:../../views/admin/DachboardWiki.php");
 }
 if(isset($_GET['refuseid'])){
     $wikirefuse = $_GET['refuseid'];
     $wiki = new Wikis(null,null,null,null,null,null,null,null);
     $wiki->refuseWiki($wikirefuse);
+    header("location:../../views/admin/DachboardWiki.php");
 }
 
 ?>

@@ -35,10 +35,10 @@ $categories = $d->selectCategories();
 <label for="default" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</label>
 
 
-<select id="default" class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<select id="default" name="tagId"  class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
     <option selected>Choose a country</option>
     <?php foreach($tags as $tag) : ?>
-  <option value="US"><?=$tag["name"] ?></option>
+  <option value="<?=$tag["id"] ?>"><?=$tag["name"] ?></option>
   <?php endforeach; ?>
 </select>
 
@@ -46,11 +46,6 @@ $categories = $d->selectCategories();
             <div>
                 <label class="text-white dark:text-gray-200" for="username">title</label>
                 <input id="username"  name="title" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-            </div>
-
-            <div>
-                <label class="text-white dark:text-gray-200" for="username">status</label>
-                <input id="username" name="status"  type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
             </div>
           
             <div>

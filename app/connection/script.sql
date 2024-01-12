@@ -17,7 +17,10 @@ CREATE Table users(
 );
 
 
-
+CREATE Table categories(
+    id int PRIMARY key AUTO_INCREMENT,
+ name VARCHAR(255)
+);
 
 
 CREATE Table wikis(
@@ -32,10 +35,7 @@ CREATE Table wikis(
     Foreign Key (user_id) REFERENCES users(id)oN DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE Table categories(
-    id int PRIMARY key AUTO_INCREMENT,
- name VARCHAR(255)
-);
+
 
 CREATE Table tags(
      id int PRIMARY key AUTO_INCREMENT,

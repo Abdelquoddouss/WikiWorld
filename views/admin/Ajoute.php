@@ -160,9 +160,6 @@ use app\controller\CategoriesController;
                     Supprimer
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Modifier
-                </th>
-                <th scope="col" class="px-6 py-3">
                     
                 </th>
                
