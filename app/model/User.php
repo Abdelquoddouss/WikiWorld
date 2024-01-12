@@ -48,7 +48,9 @@
     public function getUserByUsername(){ 
         $sql="SELECT u.*, r.name AS role_name FROM users as u
         INNER JOIN role as r ON r.id = u.role_id WHERE u.email =? ";
+        
         $stmt = $this->db->prepare($sql);
+
         $stmt->execute([$this->email]);
         $row = $stmt->fetch(PDO::FETCH_OBJ);
         // $stmt->closeCursor();

@@ -1,6 +1,7 @@
 <?php
-session_start();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'views/partials/navbar.php';
 
 use app\controller\CategoriesController;

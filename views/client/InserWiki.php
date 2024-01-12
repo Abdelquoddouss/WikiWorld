@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 require_once '../partials/navbar.php';
 use app\controller\TagsController;
 use app\controller\CategoriesController;
@@ -8,6 +11,10 @@ $tags = $c->selectTags();
 
 $d = new CategoriesController();
 $categories = $d->selectCategories();
+
+
+// var_dump($_SESSION);
+// die;
 ?>
 
 <!-- component -->
@@ -75,7 +82,7 @@ $categories = $d->selectCategories();
         </div>
 
         <div class="flex justify-end mt-6">
-            <button type="submit" name="submit_wiki" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+            <button type="submit"  name="submit_wiki" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
         </div>
     </form>
 </section>

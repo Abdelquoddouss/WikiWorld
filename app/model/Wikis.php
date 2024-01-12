@@ -18,8 +18,9 @@ namespace app\model;
         private $db;
         private $img;
         private $categories_id;
+        private $user_id;
 
-        public function __construct($description,$title,$status,$id,$db,$img,$categories_id)
+        public function __construct($description,$title,$status,$id,$db,$img,$categories_id, $user_id)
         {
             $this->db = Connection::getInstence()->getConnect();
             $this->id = $id;
@@ -28,21 +29,21 @@ namespace app\model;
             $this->status = $status;
             $this->img = $img;
             $this->categories_id = $categories_id;
+            $this->user_id = $user_id;
         }
 
 
         public function InsertWiki()
         {
-            $query = "INSERT INTO `wikis`(`description`, `title`, `status`, `img`,`categorie_id`) VALUES (?, ?, ?, ?,?)";
+            $query = "INSERT INTO `wikis`(`description`, `title`, `status`, `img`,`categorie_id`, `user_id`) VALUES (?, ?, ?, ?,?,?)";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(1,$this->description);
             $stmt->bindParam(2,$this->title);
             $stmt->bindParam(3,$this->status);
             $stmt->bindParam(4,$this->img);
             $stmt->bindParam(5,$this->categories_id);
+            $stmt->bindParam(6,$this->user_id);
             $result = $stmt->execute();
-           
-
             return $result;
         }
 
@@ -83,7 +84,7 @@ namespace app\model;
                 $result = $stmt->fetch();
         
                 if (!$result) {
-                    throw new Exception("Wiki not found with ID: " . $id); // Include the ID in the exception message
+                    throw new Exception("Wiki not found with ID: " . $id); 
                 }
         
                 return $result;
@@ -105,14 +106,53 @@ namespace app\model;
     
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+        
+        public function acceptWiki($id){
+                $sql="UPDATE wikis SET status = :status
+                WHERE id = :id";
+                $stmt = $this->db->prepare($sql);
+                $archivedValue = 'accepted';
+                $stmt->bindParam(':status',$archivedValue);
+                $stmt->bindParam(':id',$id);
+                $stmt->execute();
+            }
 
+            public function refuseWiki($id){
+                $sql="UPDATE wikis SET status = :status
+                WHERE id = :id";
+                $stmt = $this->db->prepare($sql);
+                $archivedValue = 'refused';
+                $stmt->bindParam(':status',$archivedValue);
+                $stmt->bindParam(':id',$id);
+                $stmt->execute();
+            }
+
+            public function getAcceptedWiki(){
+                $sql="SELECT wikis.*, categories.name AS category, GROUP_CONCAT(tags.name) AS tags
+                FROM wikis
+                LEFT JOIN categories ON wikis.categorie_id = categories.id
+                LEFT JOIN wikis_tags ON wikis.id = wikis_tags.wiki_id
+                LEFT JOIN tags ON wikis_tags.tags_id = tags.id
+                WHERE status = 'accepted'
+                GROUP BY wikis.id";
+                $stmt = $this->db->prepare($sql) ;
+                $stmt->execute();
+                $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $row;
+            }
+
+
+
+
+
+        }
         
         
 
 
 
 
-    }
+    
 
 
 ?>

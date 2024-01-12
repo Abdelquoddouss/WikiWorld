@@ -1,12 +1,15 @@
 <?php
-
  namespace app\controller;
-
-include __DIR__ . '/../../vendor/autoload.php';
-
+ if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}  
+ 
+ 
  use app\model\Wikis;
+ 
  use Exception;
-
+ include __DIR__ . '/../../vendor/autoload.php';
+ 
 
 
  class WikisController
@@ -16,24 +19,25 @@ include __DIR__ . '/../../vendor/autoload.php';
             $description = $_POST['description'];
             $title = $_POST['title'];
             $categories_id = $_POST['categories_id'];
+            $user_id = $_SESSION['userid'];
             $status = $_POST['status'];
             $name = $_FILES['img']['name'];
             $temp = $_FILES['img']['tmp_name'];
             $upload_folder = "../../public/imgs/".$name;
             // var_dump($img);
             if(move_uploaded_file($temp , $upload_folder)){
-               $result= new Wikis($description, $title, $status,null,null, $upload_folder,$categories_id);
-               $result->InsertWiki();
+                $result= new Wikis($description, $title, $status, null, null, $upload_folder, $categories_id, $user_id);
+                $result->InsertWiki();
+
+             header("location:../../views/client/wiki.php");
             }
                
-          
-
     }
 
     public function selectWikis()
     {
-        $obj = new Wikis('','','','','','','');
-        $wikis = $obj->getAllWikis();
+        $obj = new Wikis('','','','','','','','');
+        $wikis = $obj->getAcceptedWiki();
         return $wikis;
     
     }
@@ -42,7 +46,7 @@ include __DIR__ . '/../../vendor/autoload.php';
 
     public function selectWikis2()
     {
-        $obj = new Wikis('','','','','','','');
+        $obj = new Wikis('','','','','','','','');
         $wikis = $obj->getAllWikis2();
         return $wikis;
     
@@ -52,7 +56,7 @@ include __DIR__ . '/../../vendor/autoload.php';
 
     public function selectWikiById($id) {
         try {
-            $obj = new Wikis('','','', $id,'','',''); 
+            $obj = new Wikis('','','', $id,'','','',''); 
             $wiki = $obj->selectWikiById($id);
             return $wiki;
         } catch (Exception $e) {
@@ -66,8 +70,8 @@ include __DIR__ . '/../../vendor/autoload.php';
 
  if(isset($_GET['search'])){
     $search = $_GET['search'];
-    $wiki= new Wikis(null,null,null,null,null,null,null);
- $wikis= $wiki->searchWiki($search);
+    $wiki= new Wikis(null,null,null,null,null,null,null,null);
+   $wikis= $wiki->searchWiki($search);
   header("content-type:application/json");
   echo json_encode($wikis);
  }
@@ -77,6 +81,15 @@ include __DIR__ . '/../../vendor/autoload.php';
     $auth->processForm();
 }
 
-
+if(isset($_GET['acceptid'])){
+    $wikiaccept = $_GET['acceptid'];
+    $wiki = new Wikis(null,null,null,null,null,null,null,null);
+    $wiki->acceptWiki($wikiaccept);
+}
+if(isset($_GET['refuseid'])){
+    $wikirefuse = $_GET['refuseid'];
+    $wiki = new Wikis(null,null,null,null,null,null,null,null);
+    $wiki->refuseWiki($wikirefuse);
+}
 
 ?>

@@ -4,8 +4,9 @@ namespace app\controller;
 include __DIR__ . '/../../vendor/autoload.php';
 
 use app\model\User;
-session_start();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 
 class AuthController
@@ -35,6 +36,8 @@ class AuthController
         }else {
             $obj= new User(null,null,null,$email,$password,null);
             $data=$obj->getUserByUsername();
+
+            $_SESSION["userid"] = $data->id;
             
             if(password_verify($password,$data->password)){
 

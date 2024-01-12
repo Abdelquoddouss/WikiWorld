@@ -1,11 +1,14 @@
 <?php
 
-use app\controller\AuthController;
-
+use app\controller\WikisController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$u=new AuthController();
-$user = $u->SelectUser();
+$wiki= new WikisController();
+$wikis=$wiki->selectWikis2();
+
+
+
+
 
 ?>
 
@@ -65,7 +68,7 @@ $user = $u->SelectUser();
             </a>
          </li>
          <li>
-            <a href="./DachboardWiki.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                   <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                </svg>
@@ -106,51 +109,52 @@ $user = $u->SelectUser();
    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
       
 
+
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                  Product ID
+                  id
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  firstName
+                    title
                 </th>
                 <th scope="col" class="px-6 py-3">
-                lastName
+                description
                 </th>
                 <th scope="col" class="px-6 py-3">
-                Email
+                status
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    
-                    </th>
+                actions
+                </th>
+                
             </tr>
         </thead>
         <tbody>
 
-         <?php
-        foreach($user as $users):?>
+        <?php
+        foreach($wikis as $wiki):?>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <?php echo $users['id']?>
+                <?php echo $wiki['id']?>
                 </th>
                 <td class="px-6 py-4">
-                <?php echo $users['firstName']?>
+                <?php echo $wiki['title']?>
 
                 </td>
                 <td class="px-6 py-4">
-                <?php echo $users['lastName']?>
+                <?php echo $wiki['description']?>
 
                 </td>
                 <td class="px-6 py-4">
-                <?php echo $users['email']?>
+                <?php echo $wiki['status']?>
                 </td>
-                <td class="px-6 py-4">
-                <a href="?delete_id=<?php echo $users['id']; ?>">
-                    <lord-icon src="https://cdn.lordicon.com/skkahier.json" trigger="hover" style="width:25px;height:25px"> </lord-icon>
-                </a>
-                </td>
+                <td class="py-3 px-4 border-b">
+                <a class="text-blue-500 hover:underline mr-2" href="../../app/controller/WikisController.php?acceptid=<?= $wiki['id'] ?>">accepter</a>
+                <a class="text-red-500 hover:underline" href="../../app/controller/WikisController.php?refuseid=<?= $wiki['id'] ?>">refuse</a>
+            </td>
             </tr>
            
         </tbody>
@@ -160,14 +164,5 @@ $user = $u->SelectUser();
 </div>
 
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-<script src="https://cdn.lordicon.com/lordicon.js"></script>
-
-</body>
-</html>
-
-
-
 
 

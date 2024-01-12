@@ -29,7 +29,7 @@ $wikis = $wiki->selectWikis();
 
 </form>
 
-<div class="w-1/3 mx-auto mt-10">
+<!-- <div class="w-1/3 mx-auto mt-10">
 
 <label for="small" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categories</label>
 
@@ -49,16 +49,15 @@ $wikis = $wiki->selectWikis();
   <?php endforeach; ?>
 </select>
 
-</div>
+</div> -->
 
 
 
 <h1 class="mt-2 text-5xl font-semibold   md:mt-0 text-center  ">Wikis</h1>
-<div class="wiki flex  gap-10 ps-10	my-10">
+<div class="wiki  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
 <?php foreach($wikis as $wik): ?>
 <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-<img class="object-cover w-full h-64" src="<?= '../../public/imgs/' . basename($wik['img']) ?>" alt="Article">
-
+<img class="object-cover w-full h-64" src="../../public/imgs/<?=$wik['img'] ?>" alt="Article">
 
     <div class="p-6">
         <div>
@@ -106,7 +105,6 @@ liveSearchInput.addEventListener('keyup', async function () {
 
         });
 
-        // Update the content of the wikii div with the new HTML
     } catch (error) {
         console.error('Fetch error:', error);
     }

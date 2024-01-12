@@ -37,6 +37,15 @@
     
 }
 
+
+.error{
+                    width: 100%;
+                    font-size: 15px;
+                    color:red ;
+                    font-family: Arial, Helvetica, sans-serif;
+                    display: none;
+                  }
+
 </style>
 </head>
 
@@ -51,24 +60,33 @@
         <div class="mt-10  ">
             <label for="email" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">first name</label>
             <input type="text" name="firstname" id="firstN" class="bg-gray-50 border w-1/2	h-14	 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="first name" required>
+            <span class="error">obligatoire de remplire cette colone</span>
         </div>
         <div class="mt-10">
             <label for="email" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">lastname</label>
-            <input type="text" name="lastname" id="email" class="bg-gray-50 border w-64	h-14	 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@exemple.com" required>
+            <input type="text" name="lastname" id="lastN" class="bg-gray-50 border w-64	h-14	 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@exemple.com" required>
+            <span class="error">obligatoire de remplire cette colone</span>
+
         </div>
      </div>
      <div>
             <label for="email" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">email</label>
-            <input type="email" name="email" id="firstN" class="bg-gray-50 border w-64	h-14	 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="first name" required>
+            <input type="email" name="email" id="email" class="bg-gray-50 border w-64	h-14	 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="first name" required>
+            <span class="error">obligatoire de remplire cette colone</span>
+
         </div>
     <div class="flex grid md:grid-cols-2 md:gap-6">
          <div class="mt-10">
             <label for="email" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">password</label>
             <input type="password" name="password" id="password" class="bg-gray-50 border w-64	h-14	 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••" required>
+            <span class="error">obligatoire de remplire cette colone</span>
+
         </div>
         <div class="mt-10 	 ">
             <label for="password" class="block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white">verify password</label>
             <input type="password" name="verify" id="password" placeholder="••••••••" class="bg-gray-50 border w-64	h-14   border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-600 dark:border-gray-500 w-full dark:placeholder-gray-400 dark:text-white" required>
+            <span class="error">obligatoire de remplire cette colone</span>
+
         </div>
     </div>
        
@@ -81,6 +99,57 @@
 </form>
 
 </div>
+
+<script>
+
+let email_input = document.getElementById("email");
+let input_nom = document.getElementById("lastN");
+let input_prenom = document.getElementById("firstN");
+let input_password = document.getElementById("password");
+let emailRegex =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+input_nom.addEventListener("keyup", function () {
+  
+  if (input_nom.value === "") {
+    input_nom.nextElementSibling.style.display = "block";
+  } else {
+    input_nom.nextElementSibling.style.display = "none";
+  }
+
+});
+
+input_prenom.addEventListener("keyup", function () {
+
+if (input_prenom.value === "") {
+  input_prenom.nextElementSibling.style.display = "block";
+} else {
+  input_prenom.nextElementSibling.style.display = "none";
+}
+
+});
+email_input.addEventListener("keyup", function () {
+
+if (email_input.value === "" || !email_input.value.match(emailRegex)) {
+  email_input.nextElementSibling.style.display = "block";
+} else {
+  email_input.nextElementSibling.style.display = "none";
+}
+});
+
+input_password.addEventListener("keyup", function () {
+  
+  if (input_password.value === "" || input_password.value.length <= 4 ) {
+    input_password.nextElementSibling.style.display = "block";
+  } else {
+    input_password.nextElementSibling.style.display = "none";
+  }
+});
+
+
+
+
+
+</script>
 
 
 </body>
