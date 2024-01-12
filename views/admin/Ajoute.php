@@ -165,9 +165,7 @@ use app\controller\CategoriesController;
                 <th scope="col" class="px-6 py-3">
                     
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    
-                </th>
+               
             </tr>
             </thead>
             <tbody>
@@ -187,11 +185,7 @@ use app\controller\CategoriesController;
                     <lord-icon src="https://cdn.lordicon.com/skkahier.json" trigger="hover" style="width:25px;height:25px"> </lord-icon>
                 </a>
                 </td>
-                <td class="px-6 py-4">
-                  <a href="?action=update&id=<?php echo $obj['id']; ?>">
-                  <lord-icon src="https://cdn.lordicon.com/slmechys.json" trigger="hover" style="width:25px;height:25px"></lord-icon>
-                  </a>
-                  </td>
+                
             <?php endforeach;?>
                 </tbody>
 </div>

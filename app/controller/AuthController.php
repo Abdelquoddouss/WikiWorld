@@ -55,11 +55,24 @@ class AuthController
         }
             
       }
-    
-
     }
 
+    public function SelectUser(){
+        $obj = new User('','','','','','');
+        $users = $obj->SelectAllUser();
+        return $users;
 
+
+      }
+
+      public function deletUser(){
+        if (isset($_GET['delete_id'])) {
+            $id = $_GET['delete_id'];
+            
+            $use = new User($id, null,null,null,null,null);
+            $result = $use->deleteUser();
+        }
+      }
 
 }
 
@@ -75,7 +88,10 @@ if (isset($_POST['login_submit'])) {
     // var_dump($res);
 }
 
-
+if (isset($_GET['delete_id'])) {
+    $auth = new AuthController();
+    $auth->deletUser();
+}
 
 
 ?>

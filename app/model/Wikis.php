@@ -1,11 +1,13 @@
 <?php
+namespace app\model;
 
-    namespace app\model;
+
     include __DIR__ . '/../../vendor/autoload.php';
 
     use app\connection\connection;
     use PDO;
-use PDOException;
+    use PDOException;
+    use Exception;
 
     class Wikis
     {
@@ -72,19 +74,25 @@ use PDOException;
         }
 
 
-    public function selectWikiById($id) {
-        try {
-            $query = "SELECT * FROM `wikis` WHERE `id` = ?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindParam(1, $id);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result;
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            
+        public function selectWikiById($id) {
+            try {
+                $query = "SELECT * FROM `wikis` WHERE `id` = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bindParam(1, $id);
+                $stmt->execute();
+                $result = $stmt->fetch();
+        
+                if (!$result) {
+                    throw new Exception("Wiki not found with ID: " . $id); // Include the ID in the exception message
+                }
+        
+                return $result;
+            } catch (PDOException $e) {
+                throw new Exception("Error in selectWikiById: " . $e->getMessage());
+            }
         }
-}
+        
+        
 
 
 

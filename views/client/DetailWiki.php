@@ -4,17 +4,14 @@ require "../partials/navbar.php";
 use app\controller\WikisController;
 include __DIR__ . '/../../vendor/autoload.php';
 
-$wikiController = new WikisController(); // Instanciez le contrôleur en dehors de la condition
+$wikiController = new WikisController(); 
 
-// Vérifiez si le paramètre 'id' est défini dans l'URL
 if (isset($_GET['id'])) {
     $wikiId = $_GET['id'];
 
     $wiki = $wikiController->selectWikiById($wikiId);
 
-    // Vérifiez si le wiki avec l'ID spécifié a été trouvé
     if ($wiki) {
-        // Affichez les détails du wiki ici en utilisant les données de $wiki
 ?>
         <section class="bg-white dark:bg-gray-900">
             <div class="container px-6 py-10 mx-auto">

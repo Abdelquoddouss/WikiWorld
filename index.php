@@ -95,8 +95,7 @@ $Wikis= $b->selectWikis2();
     <div class="p-6">
         <div>
             
-            <h1 class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wik['title']?></h1>  
-            <a href="./views/client/DetailWiki.php?id=<?= $wik['id']?>" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link"></a>
+            <a href="./views/client/DetailWiki.php?id=<?= $wik['id']?>" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link"><?= $wik['title'] ?></a>
             <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wik['description']?></p>
         </div>
         </div>

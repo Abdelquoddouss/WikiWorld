@@ -44,23 +44,21 @@ $wikis = $wiki->selectWikis();
 
 
 <h1 class="mt-2 text-5xl font-semibold   md:mt-0 text-center  ">Wikis</h1>
-<div class="flex flex-wrap gap-10 ps-10 my-10">
-    <?php foreach($wikis as $wiki): ?>
+<div class="flex  gap-10 ps-10	my-10">
+    <?php foreach($wikis as $wik): ?>
 <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <img class="object-cover w-full h-64" src="<?= $wiki['img'] ?>" alt="Article">
+<img class="object-cover w-full h-64" src="<?= '../../public/imgs/' . basename($wik['img']) ?>" alt="Article">
+
 
     <div class="p-6">
         <div>
             
-        <a href="./DetailWiki.php?id=<?= $wiki['id'] ?>" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link"><?= $wiki['title'] ?></a>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wiki['description']?></p>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wiki['name']?></p>
+            <a href="./DetailWiki.php?id=<?= $wik['id']?>" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link"><?= $wik['title'] ?></a>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wik['description']?></p>
         </div>
-
-       
+        </div>
     </div>
-</div>
-<?php endforeach;?>
+    <?php endforeach;?>
 </div>
 
 

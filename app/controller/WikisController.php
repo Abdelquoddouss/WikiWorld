@@ -5,6 +5,7 @@
 include __DIR__ . '/../../vendor/autoload.php';
 
  use app\model\Wikis;
+ use Exception;
 
 
 
@@ -49,12 +50,16 @@ include __DIR__ . '/../../vendor/autoload.php';
 
 
 
-
     public function selectWikiById($id) {
-      $obj = new Wikis('','','', $id,'','',''); 
-      $wiki = $obj->selectWikiById($id);
-      return $wiki;
-  }
+        try {
+            $obj = new Wikis('','','', $id,'','',''); 
+            $wiki = $obj->selectWikiById($id);
+            return $wiki;
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
 
  }
 

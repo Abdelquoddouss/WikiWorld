@@ -5,6 +5,8 @@
 
  use app\connection\connection;
  use PDO;
+ use Exception;
+ use PDOException;
 
 
  class User
@@ -55,6 +57,32 @@
     }
 
 
+    public function SelectAllUser()
+    {
+        try {
+            $sql = "SELECT * FROM `users`";
+            $stmt = $this->db->prepare($sql);   
+            $stmt->execute();
+    
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $users;
+        } catch (PDOException $e) {
+            throw new Exception("Error in SelectAllUser: " . $e->getMessage());
+        }
+    }
+
+
+    public function deleteUser()
+    {
+        $query = "DELETE FROM users WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(1, $this->id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return true;
+
+    }
 
 
 

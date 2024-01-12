@@ -1,4 +1,13 @@
+<?php
 
+use app\controller\AuthController;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$u=new AuthController();
+$user = $u->SelectUser();
+
+?>
 
 
 <!DOCTYPE html>
@@ -102,69 +111,58 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                  Product ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Color
+                  firstName
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                lastName
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Price
+                Email
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    
+                    </th>
             </tr>
         </thead>
         <tbody>
+
+         <?php
+        foreach($user as $users):?>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                <?php echo $users['id']?>
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                <?php echo $users['firstName']?>
+
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
+                <?php echo $users['lastName']?>
+
                 </td>
                 <td class="px-6 py-4">
-                    $2999
+                <?php echo $users['email']?>
+                </td>
+                <td class="px-6 py-4">
+                <a href="?delete_id=<?php echo $users['id']; ?>">
+                    <lord-icon src="https://cdn.lordicon.com/skkahier.json" trigger="hover" style="width:25px;height:25px"> </lord-icon>
+                </a>
                 </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
-                </th>
-                <td class="px-6 py-4">
-                    White
-                </td>
-                <td class="px-6 py-4">
-                    Laptop PC
-                </td>
-                <td class="px-6 py-4">
-                    $1999
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
-                </th>
-                <td class="px-6 py-4">
-                    Black
-                </td>
-                <td class="px-6 py-4">
-                    Accessories
-                </td>
-                <td class="px-6 py-4">
-                    $99
-                </td>
-            </tr>
+           
         </tbody>
+        <?php endforeach;?>
+
     </table>
 </div>
 
 </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
 
 </body>
 </html>
