@@ -21,11 +21,9 @@
             $categories_id = $_POST['categories_id'];
             $user_id = $_SESSION['userid'];
             $tagId = $_POST['tagId'];
-            // $status = $_POST['status'];
             $name = $_FILES['img']['name'];
             $temp = $_FILES['img']['tmp_name'];
             $upload_folder = "../../public/imgs/".$name;
-            // var_dump($img);
             if(move_uploaded_file($temp , $upload_folder)){
                 $result= new Wikis($description, $title, null, null, null, $upload_folder, $categories_id, $user_id);
                 $result->InsertWiki($tagId);
@@ -44,6 +42,15 @@
     }
 
 
+    public function deletewiki($id)
+    {
+        $id = $_GET['id'];
+        $obj = new Wikis($id,'','','','','','','');
+        $obj->delete($id);
+        
+    }
+    
+
 
     public function selectWikis2()
     {
@@ -53,8 +60,7 @@
         return $wikis;
     
     }
-
-
+    
 
     public function selectWikiById($id) {
         try {
@@ -66,9 +72,11 @@
         }
     }
 
-    
+
 
  }
+
+
 
  if(isset($_GET['search'])){
     $search = $_GET['search'];
@@ -77,6 +85,7 @@
   header("content-type:application/json");
   echo json_encode($wikis);
  }
+
 
  if (isset($_POST['submit_wiki'])) {
     $auth = new WikisController();
@@ -89,6 +98,7 @@ if(isset($_GET['acceptid'])){
     $wiki->acceptWiki($wikiaccept);
     header("location:../../views/admin/DachboardWiki.php");
 }
+
 if(isset($_GET['refuseid'])){
     $wikirefuse = $_GET['refuseid'];
     $wiki = new Wikis(null,null,null,null,null,null,null,null);
@@ -96,4 +106,13 @@ if(isset($_GET['refuseid'])){
     header("location:../../views/admin/DachboardWiki.php");
 }
 
+if (isset($_GET['id']) && isset($_POST['update'])) {
+    $id = $_GET['id']; 
+    $description = $_POST['description'];
+    $title = $_POST['title'];
+    $img = $_POST['img'];    
+    $update = new Wikis($description, $title, '', '', '', $img, '', '');
+    $update->update($id);
+    header("location:../../views/client/Wiki.php");
+} 
 ?>

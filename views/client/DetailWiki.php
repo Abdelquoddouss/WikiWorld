@@ -49,5 +49,6 @@ if (isset($_GET['id'])) {
     echo '<p>Wiki ID not provided</p>';
 }
 
+
 require "../partials/footer.php";
 ?>

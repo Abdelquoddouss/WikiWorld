@@ -66,21 +66,6 @@
     }
 
 
-    // public function updateRecord($id, $name)
-    // {
-    //     $query = "UPDATE `categories` SET `name` = :name WHERE id = :id";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->bindParam(':name', $name);
-    //     $stmt->bindParam(':id', $id);
-
-    //     $result = $stmt->execute();
-
-    //     return $result;
-    // }
-
-
-
-
 
     }
 

@@ -73,12 +73,15 @@
 
         </div>
         <button type="submit" name="login_submit" class="w-full md:mt-10 mt-10  text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800  	sm:mt-1 ">Login</button>
+
         <div class="text-center md:mt-10 font-medium mx-auto block  text-gray-500 dark:text-gray-300">
         <i class="fa-brands fa-x-twitter  text-3xl "></i>
         <i class="fa-brands fa-facebook text-3xl "></i>
         <i class="fa-brands fa-square-instagram text-3xl "></i>
         </div>
+        <div class="links pt-10 block mb-2 text-stone-50 text-sm font-medium text-gray-900 dark:text-white"> <a href="./register.php">voulez vous faire sign up ?</a>  </div>
 </form>
+
 </div>
 
 <script>

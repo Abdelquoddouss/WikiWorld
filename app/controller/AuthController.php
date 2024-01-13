@@ -25,9 +25,9 @@ class AuthController
         header('location:../../views/auth/login.php  ');  
     }
 
+
     public function login()
     {
-
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -40,7 +40,6 @@ class AuthController
             $_SESSION["userid"] = $data->id;
             
             if(password_verify($password,$data->password)){
-
                     if ($data->role_name ==='admin') {
                         $_SESSION['role'] = $data->role_name;
                         header('location:../../views/admin/Dachboard.php');
@@ -49,18 +48,20 @@ class AuthController
                             var_dump($_SESSION['role']);
                             header('location:../../index.php');
                         }
-        }
-            
+        }  
       }
     }
+
+
 
     public function SelectUser(){
         $obj = new User('','','','','','');
         $users = $obj->SelectAllUser();
         return $users;
-
-
       }
+
+
+
 
       public function deletUser(){
         if (isset($_GET['delete_id'])) {
@@ -71,6 +72,8 @@ class AuthController
         }
       }
 
+
+
 }
 
 
@@ -79,10 +82,12 @@ if (isset($_POST['submit_register'])) {
     $auth->Register($_POST["firstname"],$_POST["lastname"],$_POST["email"],$_POST["password"]);
 }
 
+
 if (isset($_POST['login_submit'])) {
     $auth = new AuthController();
     $res= $auth->login($_POST["email"],$_POST["password"]);
 }
+
 
 if (isset($_GET['delete_id'])) {
     $auth = new AuthController();

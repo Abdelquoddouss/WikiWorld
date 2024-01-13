@@ -32,6 +32,35 @@ namespace app\model;
             $this->user_id = $user_id;
         }
 
+        public function delete($id) {
+            try {
+                $query = "DELETE FROM wikis WHERE id = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                $stmt->execute();
+                return true;
+            } catch (Exception $e) {
+                echo "Erreur : " . $e->getMessage();
+                return false;
+            }
+        }
+
+        public function update($id){
+            try {
+                $query = "UPDATE `wikis` SET `description`=?, `title`=?, `img`=? WHERE id = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute([
+                    $this->description,
+                    $this->title,
+                    $this->img,
+                    $id
+                ]);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        }
+        
+        
 
         public function InsertWiki($tagId)
         {
@@ -68,7 +97,8 @@ namespace app\model;
 
         public function getAllWikis2(){
             try{
-                $query = "SELECT * FROM `wikis` ORDER BY id DESC lIMIT 4";
+                $query = "SELECT * FROM `wikis` WHERE status = 'accepted' ORDER BY id DESC LIMIT 4";
+                
                 $stmt = $this->db->prepare($query);
                 $stmt->execute();
                 $result = $stmt->fetchAll();
@@ -83,15 +113,12 @@ namespace app\model;
 
         public function selectWikiById($id) {
             try {
-                $query = "
-                SELECT
-    wikis.id AS wiki_id,
-    wikis.title,
+                $query = "SELECT wikis.id AS wiki_id,
+ wikis.title,
     wikis.description,
     wikis.status,
     wikis.img,
-    categories.name AS category_name,
-    GROUP_CONCAT(tags.name) AS tag_names
+    categories.name AS category_name, GROUP_CONCAT(tags.name) AS tag_names
 FROM
     wikis
 JOIN
@@ -101,11 +128,9 @@ LEFT JOIN
 LEFT JOIN
     tags ON wikis_tags.tags_id = tags.id
 WHERE
-    wikis.id = ? -- Replace with the specific wiki ID
+    wikis.id = ? 
 GROUP BY
-    wikis.id, wikis.title, wikis.description, wikis.status, wikis.img, categories.name;
-
-                ";
+    wikis.id, wikis.title, wikis.description, wikis.status, wikis.img, categories.name;";
                 $stmt = $this->db->prepare($query);
                 $stmt->bindParam(1, $id);
                 $stmt->execute();
@@ -168,8 +193,6 @@ GROUP BY
                 $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $row;
             }
-
-
 
 
 

@@ -20,6 +20,7 @@ class CategoriesController
         }
     }
 
+
 public function selectCategories()
 {
     $obj = new Categories(null, null);
@@ -38,7 +39,6 @@ public function deletCategory()
 {
     if (isset($_GET['delete_id'])) {
         $id = $_GET['delete_id'];
-        
         $category = new Categories($id, null);
         $result = $category->deleteCategory();
     }
@@ -53,6 +53,7 @@ if (isset($_POST['submit_categories'])) {
     $auth = new CategoriesController();
     $auth->AjouteCategories();
 }
+
 
 if (isset($_GET['delete_id'])) {
     $auth = new CategoriesController();

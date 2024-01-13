@@ -18,12 +18,12 @@ class TagsController
     }
 
     public function selectTags()
-{
+ {
     $obj = new Tags(null, null);
     $tags =  $obj->AllTags();
     return $tags;
 
-}
+ }
 
 
 public function deletTags()

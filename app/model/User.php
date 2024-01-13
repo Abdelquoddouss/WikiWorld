@@ -53,7 +53,6 @@
 
         $stmt->execute([$this->email]);
         $row = $stmt->fetch(PDO::FETCH_OBJ);
-        // $stmt->closeCursor();
         return $row;
         
     }

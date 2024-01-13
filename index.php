@@ -9,8 +9,6 @@ use app\controller\WikisController;
 
 include __DIR__ . '/vendor/autoload.php';
 
-// $d = new CategoriesController();
-// $categories = $d->selectCategories();
 
 $a= new CategoriesController();
 $category = $a->selectCategories2(); 
@@ -90,7 +88,7 @@ $Wikis= $b->selectWikis2();
 <div class="flex  gap-10 ps-10	my-10">
     <?php foreach($Wikis as $wik): ?>
 <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-<img class="object-cover w-full h-64" src="<?= 'public/imgs/' . basename($wik['img']) ?>" alt="Article">
+<img class="object-cover w-full h-64" src="./public/imgs/<?=$wik['img'] ?>" alt="Article">
 
 
     <div class="p-6">
