@@ -114,23 +114,23 @@ namespace app\model;
         public function selectWikiById($id) {
             try {
                 $query = "SELECT wikis.id AS wiki_id,
- wikis.title,
-    wikis.description,
-    wikis.status,
-    wikis.img,
-    categories.name AS category_name, GROUP_CONCAT(tags.name) AS tag_names
-FROM
-    wikis
-JOIN
-    categories ON wikis.categorie_id = categories.id
-LEFT JOIN
-    wikis_tags ON wikis.id = wikis_tags.wiki_id
-LEFT JOIN
-    tags ON wikis_tags.tags_id = tags.id
-WHERE
-    wikis.id = ? 
-GROUP BY
-    wikis.id, wikis.title, wikis.description, wikis.status, wikis.img, categories.name;";
+                    wikis.title,
+                    wikis.description,
+                    wikis.status,
+                    wikis.img,
+                    categories.name AS category_name, GROUP_CONCAT(tags.name) AS tag_names
+                FROM
+                    wikis
+                JOIN
+                    categories ON wikis.categorie_id = categories.id
+                LEFT JOIN
+                    wikis_tags ON wikis.id = wikis_tags.wiki_id
+                LEFT JOIN
+                    tags ON wikis_tags.tags_id = tags.id
+                WHERE
+                    wikis.id = ? 
+                GROUP BY
+                    wikis.id, wikis.title, wikis.description, wikis.status, wikis.img, categories.name;";
                 $stmt = $this->db->prepare($query);
                 $stmt->bindParam(1, $id);
                 $stmt->execute();
@@ -200,10 +200,6 @@ GROUP BY
         
         
 
-
-
-
-    
 
 
 ?>

@@ -22,7 +22,6 @@ $categories = $d->selectCategories();
 $wiki = new WikisController();
 $wikis = $wiki->selectWikis();
 
-
 ?>
 
 
@@ -46,7 +45,7 @@ $wikis = $wiki->selectWikis();
             <a href="./DetailWiki.php?id=<?= $wik['id']?>" class="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link"><?= $wik['title'] ?></a>
             <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><?= $wik['description']?></p>
                 
-            <?php if($_SESSION["userid"] == $wik['user_id']) :?>
+            <?php if(isset($_SESSION["userid"]) && $_SESSION["userid"] == $wik['user_id']) :?>
                 
   <div class="mt-2"><a href="delete.php?id=<?php echo $wik['id']; ?>">
 

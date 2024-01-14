@@ -36,8 +36,6 @@
     color :#000;
     
 }
-
-
 .error{
                     width: 100%;
                     font-size: 15px;
@@ -48,8 +46,6 @@
 
 </style>
 </head>
-
-
 
 <body>
 <div class="pageLogin pt-10">
@@ -101,7 +97,6 @@
 </div>
 
 <script>
-
 let email_input = document.getElementById("email");
 let input_nom = document.getElementById("lastN");
 let input_prenom = document.getElementById("firstN");
